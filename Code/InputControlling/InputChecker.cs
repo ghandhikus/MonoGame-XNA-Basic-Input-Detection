@@ -118,7 +118,7 @@ namespace MapEditor
                     meow.listener.Tick(gameTime);
                     if(meow.holdHasFired == false && meow.clickTime > clickTime)
                     {
-                        meow.listener.Hold();
+                        meow.listener.Hold(gameTime);
                         meow.holdHasFired = true;
                     }
                 }
@@ -126,13 +126,13 @@ namespace MapEditor
 
                 if(gamePadState.IsButtonDown(meow.button) == true && lastGamePadState.IsButtonDown(meow.button) == false)
                 {
-                    meow.listener.Down();
+                    meow.listener.Down(gameTime);
                 }
                 else if(lastGamePadState.IsButtonDown(meow.button) == true && gamePadState.IsButtonDown(meow.button) == false)
                 {
                     if(meow.clickTime <= clickTime)
-                        meow.listener.Click();
-                    meow.listener.Up();
+                        meow.listener.Click(gameTime);
+                    meow.listener.Up(gameTime);
                 }
 
 
@@ -156,7 +156,7 @@ namespace MapEditor
                     meow.listener.Tick(gameTime);
                     if(meow.holdHasFired == false && meow.clickTime > clickTime)
                     {
-                        meow.listener.Hold();
+                        meow.listener.Hold(gameTime);
                         meow.holdHasFired = true;
                     }
                 }
@@ -164,13 +164,13 @@ namespace MapEditor
 
                 if(keyboardState.IsKeyDown(meow.key) == true && lastKeyboardState.IsKeyDown(meow.key) == false)
                 {
-                    meow.listener.Down();
+                    meow.listener.Down(gameTime);
                 }
                 else if(lastKeyboardState.IsKeyDown(meow.key) == true && keyboardState.IsKeyDown(meow.key) == false)
                 {
-                    meow.listener.Up();
+                    meow.listener.Up(gameTime);
                     if(meow.clickTime <= clickTime)
-                        meow.listener.Click();
+                        meow.listener.Click(gameTime);
                 }
 
 
