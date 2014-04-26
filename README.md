@@ -18,6 +18,9 @@ class Game
     [.............]
 
     InputListener inputListener;
+    
+    class Exit : InputListener { public override void Click() { Game.Quit(); } }
+    
     protected override void Initialize()
     {
         inputListener = new InputListener();
@@ -28,17 +31,6 @@ class Game
         
         [.............]
     
-    }
-    class Exit : InputListener
-    {
-        public override void Down() { Console.WriteLine("+Down has fired."); }
-        public override void Up() { Console.WriteLine("-Up has fired."); }
-        public override void Click()
-        {
-            Console.WriteLine("=Click has fired.");
-            Game.Quit();
-        }
-        public override void Hold() { Console.WriteLine("||Hold has fired."); }
     }
     
     [.............]
@@ -61,7 +53,7 @@ class Game
 ###InputListener class
 * Is Event holder class
 ```C#
-class Exit : InputListener
+class SomeKeyUsage : InputListener
 {
     public override void Down() { Console.WriteLine("Down has fired."); }
 
@@ -70,7 +62,7 @@ class Exit : InputListener
     public override void Click()
     {
         Console.WriteLine("Click has fired.");
-        Game.Quit();
+        Meow.Nyaa ( );
     }
 
     public override void Hold() { Console.WriteLine("Hold has fired."); }
