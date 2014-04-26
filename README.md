@@ -1,18 +1,17 @@
 Xna Basic Input Detection
 =========================
 
-##Usage
-* Instancinate InputChecker
-* Create reaction for key/button using InputListener(see below)
-* Add it to InputChecker using .AddListener(InputListener);
-* Put inputChecker.Update(GameTime); into Update.
+##What is it for and what does it do?
+It is for *Keyboard/GamePad* only.
 
-###InputChecker class
-* Detects State of Keyboard and all 4 Game Pads
-* Launches Down, Up, Click and Hold events, for each Keys and Button enums
-* Down and Up are launched everytime
-* Click is launched if key/button is released in time of InputChecker.clickTime
-* Hold is launched when is released after time of InputChecker.clickTime
+It detects Keyboard/GamePad states and launches coresponding events like *Up/Down* && *Click/Hold* from *InputListener* class.
+
+##Usage
+* Instancinate *InputChecker*
+* Create reaction for key/button using *InputListener* <sup>(see below)</sup>
+* Add it to *InputChecker* using *.AddListener*(*InputListener*);
+* Put *inputChecker*.*Update*(*GameTime*); into *Update*.
+
 ```C#
 class Game
 {
@@ -51,6 +50,13 @@ class Game
     [.............]
 }
 ```
+
+###InputChecker class
+* Detects State of Keyboard and all 4 Game Pads
+* Launches Down, Up, Click and Hold events, for each Keys and Button enums
+* Down and Up are launched everytime
+* Click is launched if key/button is released in time of InputChecker.clickTime
+* Hold is launched when is released after time of InputChecker.clickTime
 
 ###InputListener class
 * Is Event holder class
