@@ -47,6 +47,7 @@ class Game
     protected void Update(GameTime gameTime)
     {
         inputListener.Update(gameTime);
+        
     [.............]
 }
 ```
