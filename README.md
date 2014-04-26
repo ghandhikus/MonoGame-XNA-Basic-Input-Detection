@@ -2,7 +2,7 @@ Xna Basic Input Detection
 =========================
 
 ##What is it for and what does it do?
-It detects Keyboard/GamePad states and launches coresponding events, like *Up/Down* && *Click/Hold* that are from *InputListener* class which you can see implementation of down below.
+It detects Keyboard/GamePad states and launches coresponding events, like *Up/Down* && *Tick* && *Click/Hold* that are from *InputListener* class which you can see implementation of down below.
 
 It is for *Keyboard/GamePad* only.
 
@@ -19,7 +19,7 @@ class Game
 
     InputChecker inputChecker;
     
-    class Exit : InputListener { public override void Click() { Game.Quit(); } }
+    class Exit : InputListener { public override void Click(GameTime gameTime) { Game.Quit(); } }
     
     protected override void Initialize()
     {
@@ -45,27 +45,29 @@ class Game
 
 ###InputChecker class
 * Detects State of Keyboard and all 4 Game Pads
-* Launches Down, Up, Click and Hold events, for each Keys and Button enums
+* Launches Down, Up, Tick, Click and Hold events, for each Keys and Button enums
 * Down and Up are launched everytime
 * Click is launched if key/button is released in time of InputChecker.clickTime
 * Hold is launched when is released after time of InputChecker.clickTime
+* Tick is launched each time a button is pressed and an Update is called
 
 ###InputListener class
 * Is Event holder class
 ```C#
 class SomeKeyUsage : InputListener
 {
-    public override void Down() { Console.WriteLine("Down has fired."); }
+    public override void Down(GameTime gameTime) { Console.WriteLine("Down has fired."); }
 
-    public override void Up() { Console.WriteLine("Up has fired."); }
+    public override void Up(GameTime gameTime) { Console.WriteLine("Up has fired."); }
 
-    public override void Click()
+    public override void Click(GameTime gameTime)
     {
         Console.WriteLine("Click has fired.");
         Meow.Nyaa ( );
     }
 
-    public override void Hold() { Console.WriteLine("Hold has fired."); }
+    public override void Hold(GameTime gameTime) { Console.WriteLine("Hold has fired."); }
+    public override void Tick(GameTime gameTime) { Console.WriteLine("Tick has fired."); }
 }
 ```
 
