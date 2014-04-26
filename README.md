@@ -17,13 +17,13 @@ class Game
 {
     [.............]
 
-    InputListener inputListener;
+    InputChecker inputChecker;
     
     class Exit : InputListener { public override void Click() { Game.Quit(); } }
     
     protected override void Initialize()
     {
-        inputListener = new InputListener();
+        inputChecker = new InputChecker();
         Exit exitListener = new Exit();
 
         inputChecker.AddListener(Buttons.Back, exitListener);
