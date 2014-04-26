@@ -6,14 +6,14 @@ using System.Text;
 using Microsoft.Xna.Framework;
 #endregion
 
-namespace Game
+namespace MapEditor
 {
     class InputListener
     {
-        virtual public void Down() { }
-        virtual public void Up() { }
-        virtual public void Click() { }
-        virtual public void Hold() { }
+        virtual public void Down(GameTime gameTime) { }
+        virtual public void Up(GameTime gameTime) { }
+        virtual public void Click(GameTime gameTime) { }
+        virtual public void Hold(GameTime gameTime) { }
         virtual public void Tick(GameTime gameTime) { }
     }
 }
