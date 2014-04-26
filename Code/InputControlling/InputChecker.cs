@@ -1,4 +1,4 @@
-﻿#region Using Statements
+#region Using Statements
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 #endregion
 
-namespace Game
+namespace MapEditor
 {
     class InputChecker
     {
@@ -21,6 +21,7 @@ namespace Game
         List<b> gamepadThreeButtonEvents = new List<b>();
         List<b> gamepadFourButtonEvents = new List<b>();
         #endregion
+
         #region Device States
         KeyboardState lastKeyboardState = Keyboard.GetState();
         GamePadState lastGamePadOneState = GamePad.GetState(PlayerIndex.One);
@@ -83,7 +84,6 @@ namespace Game
         #region Update
         public void Update(GameTime gameTime)
         {
-            double delta = gameTime.ElapsedGameTime.TotalSeconds;
 
             KeyboardState keyboardState = Keyboard.GetState();
             GamePadState gamePadOneState = GamePad.GetState(PlayerIndex.One);
@@ -91,11 +91,11 @@ namespace Game
             GamePadState gamePadThreeState = GamePad.GetState(PlayerIndex.Three);
             GamePadState gamePadFourState = GamePad.GetState(PlayerIndex.Four);
 
-            ParseKeyboardEvents(delta, keyboardState);
-            ParseGamePadEvents(delta, gamePadOneState, lastGamePadOneState);
-            ParseGamePadEvents(delta, gamePadOneState, lastGamePadTwoState);
-            ParseGamePadEvents(delta, gamePadOneState, lastGamePadThreeState);
-            ParseGamePadEvents(delta, gamePadOneState, lastGamePadFourState);
+            ParseKeyboardEvents(gameTime, keyboardState);
+            ParseGamePadEvents(gameTime, gamePadOneState, lastGamePadOneState);
+            ParseGamePadEvents(gameTime, gamePadOneState, lastGamePadTwoState);
+            ParseGamePadEvents(gameTime, gamePadOneState, lastGamePadThreeState);
+            ParseGamePadEvents(gameTime, gamePadOneState, lastGamePadFourState);
 
             lastKeyboardState = keyboardState;
             lastGamePadOneState = gamePadOneState;
@@ -106,13 +106,16 @@ namespace Game
         #endregion
 
         #region Event Parsers
-        private void ParseGamePadEvents(double delta, GamePadState gamePadState, GamePadState lastGamePadState)
+        private void ParseGamePadEvents(GameTime gameTime, GamePadState gamePadState, GamePadState lastGamePadState)
         {
+            double delta = gameTime.ElapsedGameTime.TotalSeconds;
+
             foreach(b meow in gamepadOneButtonEvents)
             {
                 if(gamePadState.IsButtonDown(meow.button))
                 {
                     meow.clickTime += delta;
+                    meow.listener.Tick(gameTime);
                     if(meow.holdHasFired == false && meow.clickTime > clickTime)
                     {
                         meow.listener.Hold();
@@ -141,13 +144,16 @@ namespace Game
             }
         }
 
-        private void ParseKeyboardEvents(double delta, KeyboardState keyboardState)
+        private void ParseKeyboardEvents(GameTime gameTime, KeyboardState keyboardState)
         {
+            double delta = gameTime.ElapsedGameTime.TotalSeconds;
+
             foreach(a meow in keyboardKeyEvents)
             {
                 if(keyboardState.IsKeyDown(meow.key))
                 {
                     meow.clickTime += delta;
+                    meow.listener.Tick(gameTime);
                     if(meow.holdHasFired == false && meow.clickTime > clickTime)
                     {
                         meow.listener.Hold();
