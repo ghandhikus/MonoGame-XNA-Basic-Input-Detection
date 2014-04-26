@@ -1,4 +1,4 @@
-﻿#region Using Statements
+#region Using Statements
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +7,11 @@ using System.Text;
 
 namespace Game
 {
-    abstract class InputListener
+    class InputListener
     {
-        abstract public void Down();
-        abstract public void Up();
-        abstract public void Click();
-        abstract public void Hold();
+        virtual public void Down() { }
+        virtual public void Up() { }
+        virtual public void Click() { }
+        virtual public void Hold() { }
     }
 }
