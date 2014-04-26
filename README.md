@@ -49,7 +49,7 @@ class Game
 * Down and Up are launched everytime
 * Click is launched if key/button is released in time of InputChecker.clickTime
 * Hold is launched when is released after time of InputChecker.clickTime
-* Tick is launched each time a button is pressed and an Update is called
+* Tick is launched each time a button is pressed
 
 ###InputListener class
 * Is Event holder class
