@@ -2,9 +2,9 @@ Xna Basic Input Detection
 =========================
 
 ##What is it for and what does it do?
-It is for *Keyboard/GamePad* only.
+It detects Keyboard/GamePad states and launches coresponding events, like *Up/Down* && *Click/Hold* that are from *InputListener* class which you can see implementation of down below.
 
-It detects Keyboard/GamePad states and launches coresponding events like *Up/Down* && *Click/Hold* from *InputListener* class.
+It is for *Keyboard/GamePad* only.
 
 ##Usage
 * Instancinate *InputChecker*
