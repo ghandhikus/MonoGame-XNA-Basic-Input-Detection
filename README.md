@@ -1,4 +1,4 @@
-Xna Basic Input Detection
+MonoGame and Xna Basic Input Detector
 =========================
 
 ##What is it for and what does it do?
